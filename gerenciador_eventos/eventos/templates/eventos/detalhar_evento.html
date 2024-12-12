@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Evento</title>
+</head>
+<body>
+    <h1>Detalhes do Evento: {{ evento.nome }}</h1>
+    <p><strong>Data:</strong> {{ evento.data }}</p>
+    <p><strong>Descrição:</strong> {{ evento.descricao|default:"Sem descrição disponível" }}</p>
+
+    <h2>Participantes</h2>
+    {% if evento.participantes.all %}
+        <ul>
+            {% for participante in evento.participantes.all %}
+            <li>{{ participante.nome }} - {{ participante.email }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não há participantes cadastrados para este evento.</p>
+    {% endif %}
+
+    <a href="{% url 'listar_eventos' %}">Voltar para Lista de Eventos</a>
+</body>
+</html>

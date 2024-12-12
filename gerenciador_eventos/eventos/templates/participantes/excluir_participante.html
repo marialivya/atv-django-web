@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Participante</title>
+</head>
+<body>
+    <h1>Excluir Participante</h1>
+    <p>Tem certeza que deseja excluir o participante "{{ participante.nome }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Sim, Excluir</button>
+    </form>
+    <a href="{% url 'listar_participantes' %}">Cancelar</a>
+</body>
+</html>
